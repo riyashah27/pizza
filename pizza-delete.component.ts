@@ -1,29 +1,29 @@
 import { Component, OnInit } from '@angular/core';
+import { Pizza } from '../pizza';
 import { ActivatedRoute } from '@angular/router';
 import { PizzaService } from '../pizza.service';
-import { Pizza } from '../pizza';
 
 @Component({
   selector: 'app-pizza-delete',
   templateUrl: './pizza-delete.component.html',
-  styleUrls: ['./pizza-delete.component.css']
+  // styleUrls: ['./pizza-delete.component.css']
 })
 export class PizzaDeleteComponent implements OnInit {
+  private pizza:Pizza[];
+  constructor(private route:ActivatedRoute, private cartService:PizzaService) { }
 
-  constructor(private route:ActivatedRoute, private pizzaService:PizzaService) { }
-private pizza:Pizza[];
   ngOnInit() {
-    let orderName=+this.route.snapshot.paramMap.get("orderName");
-    this.deleteOrder(orderName);
+    let pizzaId=+this.route.snapshot.paramMap.get("pizzaId");
+    this.deletePizza(pizzaId);
   }
-  deleteOrder(orderName)
+  deletePizza(pizzaId)
   {
-    this.pizzaService.deleteFromCart(orderName);
-    this.pizzaService.getitems().subscribe(p=>{
-      console.log(p);
-    this.pizza=p;
-    window.alert("Your order has been cancelled");
-});
-  }
+    this.cartService.deleteFromCart(pizzaId);
+      this.cartService.getCartPizzas().subscribe(p=>{
+        console.log(p);
+      this.pizza=p;
+  });
+  
+}
 
 }
