@@ -1,0 +1,23 @@
+
+<div class="container">
+    <div class="table">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Order Name</th>
+                    <th>Price</th>
+                    <th>Pizza Type</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pizza of pizzas">
+                    <td>{{pizza.orderName}}</td>
+                    <td>{{pizza.price | currency:'INR'}}</td>
+                    <td>{{pizza.orderType}}</td>
+                    <td class="btn btn-outline-dark btn-block" routerLink="/cart/delete">Delete</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+</div>

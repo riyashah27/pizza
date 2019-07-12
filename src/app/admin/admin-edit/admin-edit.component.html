@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row" >
+        <input type="text" name="price" [(ngModel)]="pizza.orderId" disabled/>
+        <input type="text" name="price" [(ngModel)]="pizza.orderName" disabled/>
+        <input type="text" name="price" [(ngModel)]="pizza.price"/>
+        <input type="text" name="price" [(ngModel)]="pizza.orderType" disabled/>
+        <div class="col-md-2">
+            <button (click)="editAdminPizza(pizza.orderId,pizza.price)">Edit</button>
+        </div>    
+    </div>
+</div>
